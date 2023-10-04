@@ -8,6 +8,7 @@ const ImageUpload = () => {
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentFile,setCurrentFile] = useState(null)
+  const [allImages,setAllImages] = useState([])
   const handleChange = (event) => {
     setFile(event.target.files[0]);
   };
@@ -32,7 +33,9 @@ const ImageUpload = () => {
           const uploadedFileUrl = data.secure_url;
           localStorage.setItem('passportUrl', uploadedFileUrl);
           setCurrentFile(uploadedFileUrl)
+          setAllImages([...allImages,uploadedFileUrl])
           setIsLoading(false);
+          console.log(allImages)
         }
       })
 
@@ -46,7 +49,9 @@ const ImageUpload = () => {
       </button>
     </form>
     <div className="recent-upload">
-      {!currentFile?<h1>Please upload an image </h1>:<img id = "image" src={currentFile}/>}
+      {!currentFile?<h1>Please upload an image </h1>: allImages.map((image)=>{
+        return <img id = "image" src={image}/>
+      })}
     </div>
   </>
   );
