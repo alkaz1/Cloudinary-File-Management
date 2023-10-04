@@ -7,7 +7,7 @@ const App = () => {
   const uploadImage = () => {
     const data = new FormData();
     data.append("file", image);
-    data.append("upload_preset", "tutorial");
+    data.append("upload_preset", "szqs3zxn");
     data.append("cloud_name", "dkvfpxzme");
     console.log(data)
     fetch("https://api.cloudinary.com/v1_1/dkvfpxzme/image", {
